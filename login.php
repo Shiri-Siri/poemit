@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (empty($email) || empty($password)) {
-        $error = 'Please fill in all fields';
+        $error = 'Please provide valid email and password';
     } else {
         $database = new Database();
         $db = $database->getConnection();
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $user['email'];
             redirect('/');
         } else {
-            $error = 'Invalid email or password';
+            $error = 'Please provide valid email and password';
         }
     }
 }
